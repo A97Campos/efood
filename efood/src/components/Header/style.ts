@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores } from '../../globalStyle'
+import { cores } from '../../globalStyle';
 
 export const Hero = styled.header`
     background-color: ${cores.rosaClaro};
