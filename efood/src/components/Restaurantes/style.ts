@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 
 export const Card = styled.div`
     border: 1px solid ${cores.rosaEscuro};
-    width: 474px;
+    max-width: 474px;
     position: relative;
+    overflow: hidden;
 
     div {
     padding: 8px;
