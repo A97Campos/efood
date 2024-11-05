@@ -17,9 +17,3 @@ export const Nav = styled.div`
         line-height: 21px;
     }
 `
-
-export const Imagem = styled.img`
-    display: block;
-    margin: auto;
-    width: 100%;
-`

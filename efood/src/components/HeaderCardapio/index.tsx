@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logoEfood.png'
-import { Header, Imagem, Nav } from './style'
-import apresentacao from "../../assets/images/apresentacao.png"
+import { Header, Nav } from './style'
 
 export const HeaderCardapio = () => (
     <>
@@ -16,6 +15,5 @@ export const HeaderCardapio = () => (
                 </Nav>
             </div>
         </Header>
-        <Imagem src={apresentacao} alt="" />
     </>
 )

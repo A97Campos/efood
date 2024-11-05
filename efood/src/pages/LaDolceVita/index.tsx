@@ -2,6 +2,8 @@ import { HeaderCardapio } from "../../components/HeaderCardapio";
 import { ListaCardapios } from "../../components/ListaCardapio";
 import { Cardapios } from "../../models/cardapios";
 import pizza from "../../assets/images/pizzaMarguerita.png";
+import { Banner } from "../../components/Banner";
+import imagemFundo from "../../assets/images/imagem_de_fundo.png";
 
 const lista: Cardapios[] = [
     {
@@ -46,6 +48,7 @@ const lista: Cardapios[] = [
 export const LaDolce = () => (
     <>
         <HeaderCardapio />
+        <Banner texto="Italiana" titulo="La Dolce Vita Trattoria" imagem={imagemFundo}/>
         <ListaCardapios cardapios={lista}/>
     </>
 )
