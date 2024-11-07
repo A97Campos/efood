@@ -24,4 +24,5 @@ export const Texto = styled.p`
 
 export const Titulo = styled.h2`
     font-weight: 900;
+    font-size: 32px;
 `
