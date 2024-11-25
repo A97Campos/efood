@@ -45,7 +45,7 @@ const lista: Cardapios[] = [
 
 ]
 
-export const LaDolce = () => (
+export const Perfil = () => (
     <>
         <HeaderCardapio />
         <Banner texto="Italiana" titulo="La Dolce Vita Trattoria" imagem={imagemFundo}/>

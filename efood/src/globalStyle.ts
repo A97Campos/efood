@@ -22,6 +22,6 @@ export const GlobalCss = createGlobalStyle`
 
     @media only screen and (min-width: 600px) {
     width: 100%;
-}
+    }
 }
 `
