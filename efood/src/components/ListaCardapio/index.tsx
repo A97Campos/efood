@@ -1,15 +1,16 @@
-import { Cardapios } from "../../models/cardapios";
 import { BtnFechar, Lista, Modal, ModalButton, ModalContent, ModalImg, ModalText, ModalTitle, Section } from "./style";
 import { Cardapio } from "../Cardapio/index"
 
 import pizza from "../../assets/images/pizzaMarguerita.png"
 import fechar from "../../assets/images/fechar.png"
+import { Restaurantes } from "../../pages/Home";
 
 export type Props = {
-    cardapios: Cardapios[]
+    cardapios: Restaurantes[]
 }
 
 export const ListaCardapios = ({cardapios}: Props) => {
+
     return (
         <>
             <Section>
@@ -19,9 +20,9 @@ export const ListaCardapios = ({cardapios}: Props) => {
                             (car) => (
                                 <Cardapio 
                                 key={car.id}
-                                imagem={car.imagem}
-                                titulo={car.titulo}
-                                texto={car.texto}
+                                imagem={car.cardapio.foto}
+                                titulo={car.cardapio.nome}
+                                texto={car.cardapio.descricao}
                                 />                        
                             )
                         )}

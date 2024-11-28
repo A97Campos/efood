@@ -1,7 +1,7 @@
 import { TagsContainer } from "./style"
 
 type Props = {
-    children: string
+    children: string | boolean
 }
 
 export const Tags = ({children}: Props) => (

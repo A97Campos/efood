@@ -6,11 +6,13 @@ export type Props = {
     texto: string
 }
 
-export const Cardapio = ({imagem,texto,titulo}: Props) => (
-            <CardCardapio>
+export const Cardapio = ({imagem,texto,titulo}: Props) => {
+    return(
+        <CardCardapio>
                 <img src={imagem} alt="" />
                 <Titulo>{titulo}</Titulo>
                 <Txt>{texto}</Txt>
                 <Button>Mais detalhes</Button>
             </CardCardapio>
-)
+    )
+}

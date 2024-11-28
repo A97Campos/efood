@@ -9,6 +9,12 @@ export const Card = styled.div`
     position: relative;
     overflow: hidden;
 
+    > img{ 
+        width: 100%;
+        max-height: 217px;
+        object-fit: cover;
+    }
+
     div {
     padding: 8px;
     }

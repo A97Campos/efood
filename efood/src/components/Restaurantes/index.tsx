@@ -4,20 +4,21 @@ import estrela from "../../assets/images/estrela.png";
 
 export type Props = {
     imagem: string
-    infos: string[]
+    infos: string
+    destacado: boolean
     titulo: string
     texto: string
     nota: number
     destino: string
+    id: number
 }
 
-export const Lojas = ({imagem, infos, titulo, texto, nota, destino}: Props) => (
+export const Lojas = ({imagem, infos, titulo, texto, nota, destino, destacado, id}: Props) => (
     <Card>
         <img src={imagem} alt="" />
         <Infos>
-            {infos.map((info) => (
-                <Tags key={info}>{info}</Tags>
-            ))}
+            <Tags>{infos}</Tags>
+            <Tags>{destacado}</Tags>
         </Infos>
         <div>
             <Titulo>{titulo}

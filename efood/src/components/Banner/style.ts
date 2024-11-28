@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { cores } from "../../globalStyle";
 
 export const Hero = styled.div`
-    widht: 100%;
+    width: 100%;
     height: 280px;
     background-size: cover;
     background-repeat: no-repeat;
