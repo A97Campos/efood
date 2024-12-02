@@ -1,17 +1,16 @@
+import { Restaurantes } from "../../pages/Home"
 import { Button, CardCardapio, Titulo, Txt } from "./style"
 
 export type Props = {
-    imagem: string,
-    titulo: string,
-    texto: string
+    infos: Restaurantes
 }
 
-export const Cardapio = ({imagem,texto,titulo}: Props) => {
+export const Cardapio = ({infos}: Props) => {
     return(
         <CardCardapio>
-                <img src={imagem} alt="" />
-                <Titulo>{titulo}</Titulo>
-                <Txt>{texto}</Txt>
+                <img src={infos.cardapio.foto} alt="" />
+                <Titulo>{infos.cardapio.nome}</Titulo>
+                <Txt>{infos.cardapio.descricao}</Txt>
                 <Button>Mais detalhes</Button>
             </CardCardapio>
     )

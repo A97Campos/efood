@@ -19,7 +19,8 @@ export const ListaCardapios = ({cardapios}: Props) => {
                         {cardapios.map(
                             (car) => (
                                 <Cardapio 
-                                key={car.id}
+                                key={car.cardapio.id}
+                                id={car.cardapio.id}
                                 imagem={car.cardapio.foto}
                                 titulo={car.cardapio.nome}
                                 texto={car.cardapio.descricao}
