@@ -11,8 +11,6 @@ export const Perfil = () => {
 
     const [listaCardapio, setListaCardapio] = useState<Restaurantes[]>([])
 
-
-    // No componente Perfil
     useEffect(() => {
         fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
             .then((res) => res.json())
