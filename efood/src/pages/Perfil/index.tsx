@@ -17,8 +17,7 @@ export const Perfil = () => {
         fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
             .then((res) => res.json())
             .then((res) => {
-                // Garantir que o valor seja um array antes de atualizar o estado
-                setListaCardapio(Array.isArray(res) ? res : []); // Ou ajustar conforme a estrutura real da resposta
+            setListaCardapio(res);
             });
     }, [id]);
 
