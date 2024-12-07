@@ -12,9 +12,9 @@ export type Restaurantes = {
     descricao: string
     capa: string
     cardapio: {
+        id: number
         foto: string
         preco: number
-        id: number
         nome: string
         descricao: string
         porcao: string

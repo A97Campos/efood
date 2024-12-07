@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const List = styled.ul`
+export const Lista = styled.ul`
     display: grid;
     grid-template-columns: 1fr;
     margin: 80px 0 120px 0;

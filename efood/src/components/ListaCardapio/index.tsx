@@ -1,47 +1,31 @@
-import { BtnFechar, Lista, Modal, ModalButton, ModalContent, ModalImg, ModalText, ModalTitle, Section } from "./style";
-import { Cardapio } from "../Cardapio/index"
-
-import pizza from "../../assets/images/pizzaMarguerita.png"
-import fechar from "../../assets/images/fechar.png"
 import { Restaurantes } from "../../pages/Home";
+import { Lista, Section } from "./style";
+import { Cardapio } from "../Cardapio/index";
 
 export type Props = {
-    cardapios: Restaurantes[]
+    car: Restaurantes[]
 }
 
-export const ListaCardapios = ({cardapios}: Props) => {
+export const ListaCardapios = ({car}: Props) => {
 
     return (
-        <>
             <Section>
                 <div className="container">
                     <Lista>
-                        {cardapios.map(
-                            (car) => (
-                                <Cardapio 
-                                key={car.cardapio.id}
-                                id={car.cardapio.id}
-                                imagem={car.cardapio.foto}
-                                titulo={car.cardapio.nome}
-                                texto={car.cardapio.descricao}
-                                />                        
+                        {car.map((c) => (
+                                <li key={c.cardapio.id}>
+                                    <Cardapio
+                                    id={c.cardapio.id}
+                                    imagem={c.cardapio.foto}
+                                    texto={c.cardapio.descricao}
+                                    titulo={c.cardapio.nome}
+                                /> 
+                                </li>                       
                             )
                         )}
                     </Lista>
+                    {/* adicionar o maps do modal*/}
                 </div>
             </Section>
-            <Modal className="isVisibel">
-                <ModalContent className="container">
-                    <BtnFechar src={fechar} alt="" />
-                    <ModalImg src={pizza} alt="" />
-                    <div>
-                        <ModalTitle>Pizza Marguerita</ModalTitle>
-                        <ModalText>A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável. Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião. <span>Serve: de 2 a 3 pessoas</span>
-                        </ModalText>
-                        <ModalButton>Adicionar ao carrinho - R$ 60,90</ModalButton>
-                    </div>
-                </ModalContent>
-            </Modal>
-        </>
     )
 }

@@ -17,8 +17,8 @@ export const Lojas = ({imagem, infos, titulo, texto, nota, destino, destacado, i
     <Card>
         <img src={imagem} alt="" />
         <Infos>
+            {destacado === true ? <Tags>destaque da semana</Tags> : ''}
             <Tags>{infos}</Tags>
-            <Tags>{destacado}</Tags>
         </Infos>
         <div>
             <Titulo>{titulo}
