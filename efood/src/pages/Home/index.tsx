@@ -11,17 +11,20 @@ export type Restaurantes = {
     avaliacao: number
     descricao: string
     capa: string
-    cardapio: {
-        id: number
-        foto: string
-        preco: number
-        nome: string
-        descricao: string
-        porcao: string
-    }
+    cardapio: Cardapios[]
+}
+
+export type Cardapios = {
+    id: number
+    foto: string
+    preco: number
+    nome: string
+    descricao: string
+    porcao: string
 }
 
 export const Home = () => {
+    
     const [restaurante, setRestaurante] = useState<Restaurantes[]>([])
 
     useEffect(() => {

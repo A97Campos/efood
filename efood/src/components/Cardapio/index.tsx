@@ -6,22 +6,24 @@ import pizza from "../../assets/images/pizzaMarguerita.png"
 import fechar from "../../assets/images/fechar.png"
 
 type Props = {
-    imagem: string
-    titulo: string
-    texto: string
     id: number
+    foto: string
+    preco: number
+    nome: string
+    descricao: string
+    porcao: string
 }
 
-export const Cardapio = ({imagem, texto, titulo}: Props) => {
+export const Cardapio = ({id, foto, preco, nome, descricao, porcao}: Props) => {
 
     const [modalEstaVisivel, setModalEstaVisivel] = useState(true)
 
     return(
         <>
             <CardCardapio>
-                <img src={imagem} alt="" />
-                <Titulo>{titulo}</Titulo>
-                <Txt>{texto}</Txt>
+                <img src={foto} alt="" />
+                <Titulo>{nome}</Titulo>
+                <Txt>{descricao}</Txt>
                 <Button onClick={() => setModalEstaVisivel(false)}>Mais detalhes</Button>
             </CardCardapio>
 

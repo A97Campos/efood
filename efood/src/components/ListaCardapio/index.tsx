@@ -1,26 +1,28 @@
-import { Restaurantes } from "../../pages/Home";
+import { Cardapios } from "../../pages/Home";
 import { Lista, Section } from "./style";
 import { Cardapio } from "../Cardapio/index";
 
 export type Props = {
-    car: Restaurantes[]
+    car: Cardapios[]
 }
 
-export const ListaCardapios = ({car}: Props) => {
+export const ListaCardapios = ({ car }: Props) => {
 
     return (
             <Section>
                 <div className="container">
                     <Lista>
                         {car.map((c) => (
-                                <li key={c.cardapio.id}>
+                                <li key={c.id}>
                                     <Cardapio
-                                    id={c.cardapio.id}
-                                    imagem={c.cardapio.foto}
-                                    texto={c.cardapio.descricao}
-                                    titulo={c.cardapio.nome}
-                                /> 
-                                </li>                       
+                                    id={c.id}
+                                    foto={c.foto}
+                                    descricao={c.descricao}
+                                    nome={c.nome}
+                                    preco={c.preco}
+                                    porcao={c.porcao}
+                                />  
+                                </li>                    
                             )
                         )}
                     </Lista>
