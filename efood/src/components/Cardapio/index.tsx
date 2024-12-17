@@ -15,28 +15,31 @@ type Props = {
 }
 
 export const Cardapio = ({id, foto, preco, nome, descricao, porcao}: Props) => {
-
     const [modalEstaVisivel, setModalEstaVisivel] = useState(true)
+    const getDescricao = (descricao: string) => {
+        if (descricao.length > 95) {
+            return descricao.slice(0, 80) + '...'
+        }
+    }
 
     return(
         <>
             <CardCardapio>
                 <img src={foto} alt="" />
                 <Titulo>{nome}</Titulo>
-                <Txt>{descricao}</Txt>
+                <Txt>{getDescricao(descricao)}</Txt>
                 <Button onClick={() => setModalEstaVisivel(false)}>Mais detalhes</Button>
             </CardCardapio>
 
-            {/*mudar o moodal para maps */}
             <Modal className={modalEstaVisivel? 'visivel' : ''} > 
                 <ModalContent className="container">
                     <BtnFechar src={fechar} alt="" onClick={() => setModalEstaVisivel(true)} />
-                    <ModalImg src={pizza} alt="" />
+                    <ModalImg src={foto} alt="" />
                     <div>
-                        <ModalTitle>Pizza Marguerita</ModalTitle>
-                        <ModalText>A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável. Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião. <span>Serve: de 2 a 3 pessoas</span>
+                        <ModalTitle>{nome}</ModalTitle>
+                        <ModalText>{descricao} <span>Serve de: {porcao}</span>
                         </ModalText>
-                        <ModalButton>Adicionar ao carrinho - R$ 60,90</ModalButton>
+                        <ModalButton>Adicionar ao carrinho - R$ {preco}</ModalButton>
                     </div>
                 </ModalContent>
                 <div className="overlay" onClick={() => setModalEstaVisivel(true)}></div>

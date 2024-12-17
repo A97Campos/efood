@@ -14,8 +14,15 @@ export const Perfil = () => {
     useEffect(() => {
         fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
             .then((res) => res.json()) 
-            .then((res) => setListaCardapio(res))
-    })
+            .then((res) => {
+                console.log("Resposta da Api:", res)
+                if(res.cardapio) {
+                    setListaCardapio(res.cardapio)
+                } else {
+                    setListaCardapio([])
+                }
+            })
+    }, [id])
 
     
     if (!listaCardapio) {

@@ -6,6 +6,11 @@ export const CardCardapio = styled.div`
     padding: 8px;
     background-color: ${cores.rosaEscuro};
     color: ${cores.rosaClaro};
+
+    img {
+        width: 304px;
+        height: 167px;
+    }
 `
 
 export const Titulo = styled.h3`

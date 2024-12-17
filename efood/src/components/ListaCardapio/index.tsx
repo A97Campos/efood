@@ -13,20 +13,18 @@ export const ListaCardapios = ({ car }: Props) => {
                 <div className="container">
                     <Lista>
                         {car.map((c) => (
-                                <li key={c.id}>
                                     <Cardapio
+                                    key={c.id}
                                     id={c.id}
                                     foto={c.foto}
                                     descricao={c.descricao}
                                     nome={c.nome}
                                     preco={c.preco}
                                     porcao={c.porcao}
-                                />  
-                                </li>                    
+                                />                   
                             )
                         )}
                     </Lista>
-                    {/* adicionar o maps do modal*/}
                 </div>
             </Section>
     )
