@@ -49,13 +49,3 @@ export const Txt = styled.p`
     line-height: 22px;
     padding: 16px 0;
 `
-
-export const ButtonLink = styled(Link)`
-    background-color: ${cores.rosaEscuro};
-    color: ${cores.rosaClaro};
-    padding: 8px 6px;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-`

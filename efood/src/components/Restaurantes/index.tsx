@@ -1,6 +1,7 @@
 import { Tags } from "../Tags";
-import { ButtonLink, Card, Infos, Titulo, Txt } from "./style";
+import { Card, Infos, Titulo, Txt } from "./style";
 import estrela from "../../assets/images/estrela.png";
+import { ButtonLink } from "../Button/style";
 
 export type Props = {
     imagem: string
@@ -28,7 +29,7 @@ export const Lojas = ({imagem, infos, titulo, texto, nota, destino, destacado, i
                 </span>
             </Titulo>
             <Txt>{texto}</Txt>
-            <ButtonLink to={destino}>Saiba mais</ButtonLink>            
+            <ButtonLink to={destino} title="saiba mais" variant="rosaEscuro" type="link">Saiba mais</ButtonLink>            
         </div>
     </Card>
 )

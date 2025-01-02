@@ -3,14 +3,14 @@ import { Lojas } from "../Restaurantes"
 import { Lista } from "./style";
 
 export type Props = {
-    restaurantes: Restaurantes[]
+    restaurantes?: Restaurantes[]
 }
 
 export const ListaRestaurantes = ({restaurantes}: Props) => (
     <div className="container">
         <div>
             <Lista>
-                {restaurantes.map((res) => (
+                {restaurantes?.map((res) => (
                     <Lojas
                         key={res.id}
                         id={res.id}

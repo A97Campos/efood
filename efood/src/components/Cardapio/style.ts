@@ -24,17 +24,6 @@ export const Txt = styled.p`
     font-size: 14px;
 `
 
-export const Button = styled.button`
-    background-color: ${cores.rosaClaro};
-    color: ${cores.rosaEscuro};
-    width: 100%;
-    border: none;
-    font-weight: 700;
-    font-size: 14px;
-    padding: 4px 0;
-    cursor: pointer;
-`
-
 export const Modal = styled.div`
     position: fixed;
     top: 0;
@@ -106,16 +95,6 @@ export const ModalText = styled.p`
         display: block;
         margin-top: 16px;
     }
-`
-
-export const ModalButton = styled.button`
-    font-weight: 700;
-    font-size: 14px;
-    padding: 4px;
-    background-color: ${cores.rosaClaro};
-    color: ${cores.rosaEscuro};
-    border: none;
-    cursor: pointer;
 `
 
 export const BtnFechar = styled.img`

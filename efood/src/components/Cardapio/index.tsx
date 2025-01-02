@@ -1,9 +1,10 @@
 import { useState } from "react"
 
-import { BtnFechar, Button, CardCardapio, Modal, ModalButton, ModalContent, ModalImg, ModalText, ModalTitle, Titulo, Txt } from "./style"
+import { BtnFechar, CardCardapio, Modal, ModalContent, ModalImg, ModalText, ModalTitle, Titulo, Txt } from "./style"
 
 import pizza from "../../assets/images/pizzaMarguerita.png"
 import fechar from "../../assets/images/fechar.png"
+import { ButtonContainer } from "../Button/style"
 
 type Props = {
     id: number
@@ -28,7 +29,7 @@ export const Cardapio = ({id, foto, preco, nome, descricao, porcao}: Props) => {
                 <img src={foto} alt="" />
                 <Titulo>{nome}</Titulo>
                 <Txt>{getDescricao(descricao)}</Txt>
-                <Button onClick={() => setModalEstaVisivel(false)}>Mais detalhes</Button>
+                <ButtonContainer onClick={() => setModalEstaVisivel(false)} type="button" title="mais detalhes">Mais detalhes</ButtonContainer>
             </CardCardapio>
 
             <Modal className={modalEstaVisivel? 'visivel' : ''} > 
@@ -39,7 +40,7 @@ export const Cardapio = ({id, foto, preco, nome, descricao, porcao}: Props) => {
                         <ModalTitle>{nome}</ModalTitle>
                         <ModalText>{descricao} <span>Serve de: {porcao}</span>
                         </ModalText>
-                        <ModalButton>Adicionar ao carrinho - R$ {preco}</ModalButton>
+                        <button>Adicionar ao carrinho - R$ {preco}</button>
                     </div>
                 </ModalContent>
                 <div className="overlay" onClick={() => setModalEstaVisivel(true)}></div>

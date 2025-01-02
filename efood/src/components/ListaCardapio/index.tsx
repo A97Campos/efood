@@ -3,7 +3,7 @@ import { Lista, Section } from "./style";
 import { Cardapio } from "../Cardapio/index";
 
 export type Props = {
-    car: Cardapios[]
+    car?: Cardapios[]
 }
 
 export const ListaCardapios = ({ car }: Props) => {
@@ -12,7 +12,7 @@ export const ListaCardapios = ({ car }: Props) => {
             <Section>
                 <div className="container">
                     <Lista>
-                        {car.map((c) => (
+                        {car?.map((c) => (
                                     <Cardapio
                                     key={c.id}
                                     id={c.id}
