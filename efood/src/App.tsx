@@ -5,7 +5,6 @@ import { Rotas } from './routes';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { Cart } from './components/Cart';
-import { Modal } from './components/Modal';
 import { useState } from 'react';
 import { Cardapios } from './pages/Home';
 
@@ -18,7 +17,6 @@ function App() {
         <Rotas />
         <Footer />
         <Cart />
-        <Modal cardapio={cardapio} />
       </BrowserRouter>
     </Provider>
   );

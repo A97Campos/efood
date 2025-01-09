@@ -21,7 +21,14 @@ export const ListaCardapios = ({ car }: Props) => {
                                 nome={c.nome}
                                 preco={c.preco}
                                 porcao={c.porcao}
-                            />
+                                cardapio={{
+                                    id: 0,
+                                    foto: "",
+                                    preco: 0,
+                                    nome: "",
+                                    descricao: "",
+                                    porcao: ""
+                                }}                            />
                             )
                         )}
                     </Lista>
