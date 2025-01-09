@@ -12,6 +12,7 @@ export const Nav = styled.div`
     justify-content: space-between;
     
     p {
+        cursor: pointer;
         font-weight: 900;
         font-size: 18px;
         line-height: 21px;

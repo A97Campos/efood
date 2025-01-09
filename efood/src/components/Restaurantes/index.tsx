@@ -9,7 +9,7 @@ export type Props = {
     destacado: boolean
     titulo: string
     texto: string
-    nota: number
+    nota: string
     destino: string
     id: number
 }

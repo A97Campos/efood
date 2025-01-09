@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logoEfood.png'
 import { Header, Nav } from './style'
+import { useDispatch } from 'react-redux'
+import { open } from '../../store/reducers/cart'
 
-export const HeaderCardapio = () => (
+export const HeaderCardapio = () => {
+    const dispatch = useDispatch()
+
+    const openCart = () => {
+        dispatch(open())
+    }
+    return (
     <>
         <Header>
             <div className="container">
@@ -11,9 +19,10 @@ export const HeaderCardapio = () => (
                     <Link to="/">
                         <img src={logo} alt="" />
                     </Link>
-                    <p>0 produtos(s) no carrinho</p>
+                    <p onClick={openCart}>0 produtos(s) no carrinho</p>
                 </Nav>
             </div>
         </Header>
     </>
-)
+    )
+}

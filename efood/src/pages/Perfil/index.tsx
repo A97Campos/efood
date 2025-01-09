@@ -1,31 +1,23 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { HeaderCardapio } from "../../components/HeaderCardapio";
 import { ListaCardapios } from "../../components/ListaCardapio";
 import { Banner } from "../../components/Banner";
 
-import { Cardapios } from "../Home";
+import { useGetCardapiosQuery } from "../../services/api";
+import { Cart } from "../../components/Cart";
+
+
+type RestaurantParams = {
+    id: string
+}
 
 export const Perfil = () => {
-    const { id } = useParams()
+    const { id } = useParams() as RestaurantParams
 
-    const [listaCardapio, setListaCardapio] = useState<Cardapios[]>([])
-
-    useEffect(() => {
-        fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-            .then((res) => res.json()) 
-            .then((res) => {
-                console.log("Resposta da Api:", res)
-                if(res.cardapio) {
-                    setListaCardapio(res.cardapio)
-                } else {
-                    setListaCardapio([])
-                }
-            })
-    }, [id])
+    const { data: cardapio} = useGetCardapiosQuery(id)
 
     
-    if (!listaCardapio) {
+    if (!cardapio) {
         return (
             <>
                 <HeaderCardapio />
@@ -39,7 +31,7 @@ export const Perfil = () => {
         <>
             <HeaderCardapio />
             <Banner />
-            <ListaCardapios car={listaCardapio}/>
+            <ListaCardapios car={cardapio}/>
         </>
     )
 }

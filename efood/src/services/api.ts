@@ -9,7 +9,8 @@ const api = createApi({
     endpoints: (builder) => ({
         getRestaurante: builder.query<Restaurantes[], void>({
             query: () => '/restaurantes'
-        }), getCardapios: builder.query<Cardapios[], void>({
+        }), 
+        getCardapios: builder.query<Restaurantes, string>({
             query: (id) => `/restaurantes/${id}`
         })
     })

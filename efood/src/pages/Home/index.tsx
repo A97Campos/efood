@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 
 import { ListaRestaurantes } from "../../components/ListaRestaurante";
 import { Header } from "../../components/Header";
-import { useGetCardapiosQuery, useGetRestauranteQuery } from "../../services/api";
+import { useGetRestauranteQuery } from "../../services/api";
 
 export type Restaurantes = {
     id: number
     titulo: string
     destacado: boolean
     tipo: string
-    avaliacao: number
+    avaliacao: string
     descricao: string
     capa: string
     cardapio: Cardapios[]

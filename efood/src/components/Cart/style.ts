@@ -7,6 +7,11 @@ export const CartContainer = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
+    display: none;
+
+    &.isOpen {
+        display: flex;
+    }
 `
 
 export const Overlay = styled.div`
@@ -32,13 +37,7 @@ export const ListItem = styled.li`
     color: ${cores.rosaEscuro};
     margin-bottom: 16px;
     padding: 8px 8px 12px 8px;
-
-    img {
-        width: 80px;
-        height: 80px;
-        object-fit: cover;
-        margin-right: 8px;
-    }
+    position: relative;
 
     h3 {
         font-size: 18px;
@@ -52,6 +51,13 @@ export const ListItem = styled.li`
     }
 `
 
+export const ImgCardapio = styled.img`
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 8px;
+`
+
 export const Price = styled.p`
     font-size: 14px;
     font-weight: 700;
@@ -59,4 +65,12 @@ export const Price = styled.p`
     justify-content: space-between;
     color: ${cores.rosaClaro};
     margin: 40px 0 16px 0;
+`
+
+export const Lixeira = styled.img`
+    width: 16px;
+        height: 16px;
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
 `
