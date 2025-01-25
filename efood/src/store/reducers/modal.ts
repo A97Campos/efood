@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Cardapios } from "../../pages/Home";
 
 type ModalState = {
-    estaAberto: {[id: string]: boolean}
+    estaAberto: boolean[]
     itemsCardapio: Cardapios[]
 }
 
 const initialState: ModalState = {
-    estaAberto: {}, 
+    estaAberto: [], 
     itemsCardapio: []
 }
 
