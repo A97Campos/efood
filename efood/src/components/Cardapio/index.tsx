@@ -34,16 +34,18 @@ export const Cardapio = ({ id, foto, descricao, nome, porcao, preco, cardapio }:
 
     const dispatch = useDispatch()
 
+    const modalEstaAberto = estaAberto[id] || false
+
     const openModal = () => {
-        dispatch(abrirModal())
+        dispatch(abrirModal(id))
     }
 
     const closeModal = () => {
-        dispatch(fecharModal())
+        dispatch(fecharModal(id))
     }
 
     const addToCart = () => {
-        dispatch(fecharModal())
+        dispatch(fecharModal(id))
         dispatch(add(cardapio))
         dispatch(open())
     }
@@ -54,11 +56,11 @@ export const Cardapio = ({ id, foto, descricao, nome, porcao, preco, cardapio }:
                 <img src={foto} alt="" />
                 <Titulo>{nome}</Titulo>
                 <Txt>{getDescricao(descricao)}</Txt>
-                <ButtonContainer onClick={() => openModal()} type="button" title="mais detalhes">Mais detalhes</ButtonContainer>
+                <ButtonContainer onClick={openModal} type="button" title="mais detalhes">Mais detalhes</ButtonContainer>
             </CardCardapio>
-            <ModalContainer className={estaAberto ? '' : 'visivel'} > 
+            <ModalContainer className={modalEstaAberto ? '' : 'visivel'} > 
                 <ModalContent className="container">
-                    <BtnFechar src={fechar} alt="" onClick={() => closeModal()} />
+                    <BtnFechar src={fechar} alt="" onClick={closeModal} />
                     <ModalImg src={foto} alt="" />
                     <div>
                         <ModalTitle>{nome}</ModalTitle>
@@ -67,7 +69,7 @@ export const Cardapio = ({ id, foto, descricao, nome, porcao, preco, cardapio }:
                         <ButtonContainer onClick={addToCart}>Adicionar ao carrinho - R$ {preco}</ButtonContainer>
                     </div>
                 </ModalContent>
-                <div className="overlay" onClick={() => closeModal()}></div>
+                <div className="overlay" onClick={closeModal}></div>
             </ModalContainer>
         </>
     )

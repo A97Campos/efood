@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Cardapios } from "../../pages/Home";
 
 type ModalState = {
-    estaAberto: boolean
+    estaAberto: {[id: string]: boolean}
     itemsCardapio: Cardapios[]
 }
 
 const initialState: ModalState = {
-    estaAberto: false, 
+    estaAberto: {}, 
     itemsCardapio: []
 }
 
@@ -15,11 +15,11 @@ const modalSlice = createSlice({
     name: 'modal',
     initialState,
     reducers: {
-        abrirModal: (state) => {
-            state.estaAberto = true
+        abrirModal: (state, action: PayloadAction<number>) => {
+            state.estaAberto[action.payload] = true
         },
-        fecharModal: (state) => {
-            state.estaAberto = false
+        fecharModal: (state, action: PayloadAction<number>) => {
+            state.estaAberto[action.payload] = false
         }
     }
 })
