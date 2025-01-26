@@ -4,7 +4,6 @@ import { ListaCardapios } from "../../components/ListaCardapio";
 import { Banner } from "../../components/Banner";
 
 import { useGetCardapiosQuery } from "../../services/api";
-import { Cart } from "../../components/Cart";
 
 
 type RestaurantParams = {

@@ -5,11 +5,9 @@ import { Rotas } from './routes';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { Cart } from './components/Cart';
-import { useState } from 'react';
-import { Cardapios } from './pages/Home';
+import { Checkout } from './components/Checkout';
 
 function App() {
-  const [cardapio, setCardapio] = useState<Cardapios>()
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -17,6 +15,7 @@ function App() {
         <Rotas />
         <Footer />
         <Cart />
+        <Checkout />
       </BrowserRouter>
     </Provider>
   );
