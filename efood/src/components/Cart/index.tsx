@@ -42,14 +42,14 @@ export const Cart = () => {
                                 <ImgCardapio src={item.foto} alt={item.nome} />
                                 <div>
                                     <h3>{item.nome}</h3>
-                                    <p>{item.preco}</p>
+                                    <p>{formataPreco(item.preco)}</p>
                                 </div>
                                 <Lixeira src={lixeira} alt="" onClick={() => removeItem(item.id)}/>
                             </ListItem>
                         ))}
                     </ul>
                     <Price>Valor total: <span>{formataPreco(valorTotal())}</span></Price>
-                    <ButtonContainer type="button" title="continuar compra">continuar a compra</ButtonContainer>
+                    <ButtonContainer type="button" title="continuar compra">Continuar com a entrega</ButtonContainer>
                 </Sidebar>
             </CartContainer>
         </>
