@@ -5,11 +5,13 @@ import { ButtonContainer } from "../Button/style"
 import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
 import { close, remove } from "../../store/reducers/cart"
+import { openCheckout } from "../../store/reducers/checkout"
 
 export const Cart = () => {
     const { isOpen, itemCardapio } = useSelector((state: RootReducer) => state.cart)
 
     const dispatch = useDispatch()
+
     const closeCart = () => {
         dispatch(close())
     }
@@ -30,6 +32,11 @@ export const Cart = () => {
             currency: 'BRL'
         }).format(preco)
     }
+
+    const abrirCheckout = () => {
+        dispatch(openCheckout())
+        dispatch(close())
+    }
     
     return (
         <>
@@ -49,7 +56,7 @@ export const Cart = () => {
                         ))}
                     </ul>
                     <Price>Valor total: <span>{formataPreco(valorTotal())}</span></Price>
-                    <ButtonContainer type="button" title="continuar compra">Continuar com a entrega</ButtonContainer>
+                    <ButtonContainer type="button" title="continuar compra" onClick={abrirCheckout}>Continuar com a entrega</ButtonContainer>
                 </Sidebar>
             </CartContainer>
         </>
