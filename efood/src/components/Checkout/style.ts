@@ -52,6 +52,10 @@ export const Linha = styled.div`
         font-weight: 400;
         margin-bottom: 24px;
     }
+
+    &.estaAberto {
+        display: none;
+    }
 `
 
 export const GrupoInput = styled.div<GrupoInputProps>`

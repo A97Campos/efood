@@ -1,19 +1,28 @@
 import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useFormik } from "formik"
+import * as Yup from 'yup'
 import { ButtonContainer } from "../Button/style"
 import { CheckContainer, Container, GrupoInput, Input, Linha, Overlay } from "./style"
-import { useFormik } from "formik"
-import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
 import { closeCheckout } from "../../store/reducers/checkout"
+import { open } from "../../store/reducers/cart"
 
 export const Checkout = () => {
 
     const { isOpen } = useSelector((state: RootReducer) => state.checkout)
 
+    const [ pagamento, setPagamento ] = useState(true)
+
     const dispatch = useDispatch()
 
     const fecharCheckout = () => {
         dispatch(closeCheckout())
+    }
+
+    const voltarParaCarrinho = () => {
+        dispatch(closeCheckout())
+        dispatch(open())
     }
 
     const form = useFormik({
@@ -24,6 +33,25 @@ export const Checkout = () => {
             mesDeVencimento: '',
             anoDeVencimento: ''
         },
+        validationSchema: Yup.object({
+            nome: Yup.string()
+                .min(5, 'O campo precisa ter ao menos 5 caracteres')
+                .required('O campo é obrigatório'),
+            endereco: Yup.string()
+                .min(4, 'O campo precisa ter ao menos 4 caracteres')
+                .required('O campo é obrigatório'),
+            cidade: Yup.string()
+                .min(2, 'O campo precisa ter ao menos 2 caracteres')
+                .required('O campo é obrigatório'),
+            cep: Yup.string()
+                .min(8, 'O campo precisa ter 8 caracteres')
+                .max(8, 'O campo precisa ter 8 caracteres')
+                .required('O campo é obrigatório'),
+            numero: Yup.string()
+                .required('O campo é obrigatório'),
+
+            
+        }),
         onSubmit: (values) => {
             console.log(values)
         }
@@ -34,7 +62,8 @@ export const Checkout = () => {
             <CheckContainer>
                 <h3>Entrega</h3>
                 <form onSubmit={form.handleSubmit}>
-                    <Linha>
+                    {pagamento ? (
+                        <Linha>
                         <GrupoInput>
                             <label htmlFor="nome">Quem irá receber</label>
                             <Input type="text" name="nome" id="nome" />
@@ -62,11 +91,16 @@ export const Checkout = () => {
                             <Input type="text" name="complemento" id="complemento" />
                         </GrupoInput>
 
-                        <ButtonContainer type="button" title="continuar com o pagamento">Continuar com o pagamento</ButtonContainer>
-                        <ButtonContainer type="button" title="voltar para o carrinho">Voltar para o carrinho</ButtonContainer>
+                        <ButtonContainer type="button" title="continuar com o pagamento" onClick={() => setPagamento(false)}>Continuar com o pagamento</ButtonContainer>
+                        <ButtonContainer 
+                            type="button" 
+                            title="voltar para o carrinho" 
+                            onClick={voltarParaCarrinho}>
+                            Voltar para o carrinho
+                        </ButtonContainer>
                     </Linha>
-
-                    <Linha>
+                    ) : (
+                        <Linha>
                         <h3>Pagamento - Valor a pagar R$ 190,90</h3>
                         <GrupoInput>
                             <label htmlFor="nomeNoCartao">Nome no cartão</label>
@@ -127,9 +161,14 @@ export const Checkout = () => {
                             </div>
                         </GrupoInput>
 
-                        <ButtonContainer type="button" title="">Finalizar Pagamento</ButtonContainer>
-                        <ButtonContainer type="button" title="">Voltar para a edição de endereço</ButtonContainer>
+                        <ButtonContainer type="button" title="Finalizar pagamento">Finalizar Pagamento</ButtonContainer>
+                        <ButtonContainer type="button" title="Voltar para a edição de pagamento" onClick={() => setPagamento(true)}>Voltar para a edição de endereço</ButtonContainer>
                     </Linha>
+                    )}
+
+                    
+
+                    
                 </form>
 
                 <Linha>
