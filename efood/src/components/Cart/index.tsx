@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
 import { close, remove } from "../../store/reducers/cart"
 import { openCheckout } from "../../store/reducers/checkout"
+import { formataPreco, valorTotal } from "../../utils"
 
 export const Cart = () => {
     const { isOpen, itemCardapio } = useSelector((state: RootReducer) => state.cart)
@@ -18,19 +19,6 @@ export const Cart = () => {
 
     const removeItem = (id: number) => {
         dispatch(remove(id))
-    }
-
-    const valorTotal = () => {
-        return itemCardapio.reduce((acumulador, valorAtual) => {
-            return (acumulador += valorAtual.preco)
-        }, 0)
-    }
-
-    const formataPreco = (preco = 0) => {
-        return new Intl.NumberFormat('pt-BR' , {
-            style: 'currency',
-            currency: 'BRL'
-        }).format(preco)
     }
 
     const abrirCheckout = () => {
@@ -55,7 +43,7 @@ export const Cart = () => {
                             </ListItem>
                         ))}
                     </ul>
-                    <Price>Valor total: <span>{formataPreco(valorTotal())}</span></Price>
+                    <Price>Valor total: <span>{formataPreco(valorTotal(itemCardapio))}</span></Price>
                     <ButtonContainer type="button" title="continuar compra" onClick={abrirCheckout}>Continuar com a entrega</ButtonContainer>
                 </Sidebar>
             </CartContainer>

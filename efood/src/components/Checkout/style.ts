@@ -75,7 +75,11 @@ export const Input = styled.input<InputProps>`
     border: none;
     height: 32px;
     background-color: ${cores.rosaClaro};
-    width: ${(props) => props.maxWidth || 'auto'};    
+    width: ${(props) => props.maxWidth || 'auto'};
+
+    &.erro {
+        border: 2px solid red;
+    }
 `
 
 export const Overlay = styled.div`

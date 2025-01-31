@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { Cardapios } from "../../pages/Home"
 
 type checkoutState = {
     isOpen: boolean
+    items: Cardapios[]
 }
 
 const initialState: checkoutState = {
-    isOpen: false
+    isOpen: false,
+    items: []
 }
 
 const checkoutSlice = createSlice({
@@ -17,9 +20,11 @@ const checkoutSlice = createSlice({
         },
         closeCheckout: (state) => {
             state.isOpen = false
+        }, limparCheckout: (state) => {
+            state.items = []
         }
     }
 })
 
-export const { openCheckout, closeCheckout } = checkoutSlice.actions
+export const { openCheckout, closeCheckout, limparCheckout } = checkoutSlice.actions
 export default checkoutSlice.reducer
