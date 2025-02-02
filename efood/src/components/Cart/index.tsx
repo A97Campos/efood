@@ -30,22 +30,27 @@ export const Cart = () => {
         <>
             <CartContainer className={isOpen ? 'isOpen' : ''}>
                 <Overlay onClick={closeCart} />
+                {itemCardapio.length === 0 ? 
                 <Sidebar>
-                    <ul>
-                        {itemCardapio.map((item) => (
-                            <ListItem key={item.id}>
-                                <ImgCardapio src={item.foto} alt={item.nome} />
-                                <div>
-                                    <h3>{item.nome}</h3>
-                                    <p>{formataPreco(item.preco)}</p>
-                                </div>
-                                <Lixeira src={lixeira} alt="" onClick={() => removeItem(item.id)}/>
-                            </ListItem>
-                        ))}
-                    </ul>
-                    <Price>Valor total: <span>{formataPreco(valorTotal(itemCardapio))}</span></Price>
-                    <ButtonContainer type="button" title="continuar compra" onClick={abrirCheckout}>Continuar com a entrega</ButtonContainer>
-                </Sidebar>
+                    <p>Adicione um item ao carrinho para continuar a compra.</p>
+                </Sidebar> : 
+                <Sidebar>
+                        <ul>
+                            {itemCardapio.map((item) => (
+                                <ListItem key={item.id}>
+                                    <ImgCardapio src={item.foto} alt={item.nome} />
+                                    <div>
+                                        <h3>{item.nome}</h3>
+                                        <p>{formataPreco(item.preco)}</p>
+                                    </div>
+                                    <Lixeira src={lixeira} alt="" onClick={() => removeItem(item.id)}/>
+                                </ListItem>
+                            ))}
+                        </ul>
+                        <Price>Valor total: <span>{formataPreco(valorTotal(itemCardapio))}</span></Price>
+                        <ButtonContainer type="button" title="continuar compra" onClick={abrirCheckout}>Continuar com a entrega</ButtonContainer>
+                    </Sidebar>
+            }
             </CartContainer>
         </>
     )

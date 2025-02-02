@@ -28,6 +28,10 @@ export const Sidebar = styled.div`
     height: 100%;
     background-color: ${cores.rosaEscuro};
     padding: 32px 8px;
+
+    p {
+        color: ${cores.branco};
+    }
 `
 
 export const ListItem = styled.li`
@@ -48,6 +52,7 @@ export const ListItem = styled.li`
     p {
         font-size: 14px;
         font-weight: 400;
+        color: ${cores.rosaEscuro};
     }
 `
 

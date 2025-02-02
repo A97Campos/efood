@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { cores } from "../../globalStyle";
 import { ButtonContainer } from "../Button/style";
+import { Button } from "../Button";
 
 type GrupoInputProps = {
     gridColumn?: string

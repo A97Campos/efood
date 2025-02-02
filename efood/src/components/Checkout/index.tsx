@@ -96,16 +96,16 @@ export const Checkout = () => {
                 expira: {
                     mes: Number(values.mesDeVencimento),
                     ano: Number(values.anoDeVencimento),
-                },
-            },
+                }
+            }
         },
         produtos: itemCardapio.map((item) => ({
             id: item.id,
             preco: item.preco,
-        })),
-        });
-    },
-    });
+        }))
+        })
+    }
+    })
 
     console.log(form);
 
@@ -123,6 +123,11 @@ export const Checkout = () => {
             dispatch(limparCheckout())
         }
     }, [isSuccess, dispatch])
+
+    const clickDoButton = () => {
+        form.handleSubmit()
+        setPagamento(false)
+    }
 
     return (
         <Container className={isOpen ? "" : "is-open"}>
@@ -153,9 +158,8 @@ export const Checkout = () => {
             </Linha>
         ) : (
             <CheckContainer>
-            <form onSubmit={form.handleSubmit}>
                 {pagamento ? (
-                <>
+                <form onSubmit={form.handleSubmit}>
                     <h3>Entrega</h3>
                     <Linha>
                         <GrupoInput>
@@ -205,7 +209,6 @@ export const Checkout = () => {
                             onBlur={form.handleBlur}
                             value={form.values.cep}
                             className={checkInputErro("cep") ? "erro" : ""}
-                            mask=""
                             maxWidth="155px"
                             />
                         </div>
@@ -238,7 +241,7 @@ export const Checkout = () => {
                         <ButtonContainer
                         type="submit"
                         title="continuar com o pagamento"
-                        onClick={() => setPagamento(false)}
+                        onClick={clickDoButton}
                         >
                         Continuar com o pagamento
                         </ButtonContainer>
@@ -250,100 +253,104 @@ export const Checkout = () => {
                         Voltar para o carrinho
                         </ButtonContainer>
                     </Linha>
-                </>
+                </ form>
                 ) : (
-                <Linha>
-                    <h3>Pagamento - Valor a pagar {formataPreco(valorTotal(itemCardapio))}</h3>
-                    <GrupoInput>
-                    <label htmlFor="nomeNoCartao">Nome no cartão</label>
-                    <Input
-                        type="text"
-                        name="nomeNoCartao"
-                        id="nomeNoCartao"
-                        value={form.values.nomeNoCartao}
-                        onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                        className={checkInputErro("nomeNoCartao") ? "erro" : ""}
-                    />
-                    </GrupoInput>
-                    <GrupoInput gridColumn="auto auto" gap="30px">
-                    <div>
-                        <label htmlFor="numeroDoCartao">Número do cartão</label>
+                <form onSubmit={form.handleSubmit}>
+                    <Linha>
+                        <h3>Pagamento - Valor a pagar {formataPreco(valorTotal(itemCardapio))}</h3>
+                        <GrupoInput>
+                        <label htmlFor="nomeNoCartao">Nome no cartão</label>
                         <Input
-                        type="text"
-                        name="numeroDoCartao"
-                        id="numeroDoCartao"
-                        value={form.values.numeroDoCartao}
-                        onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                        className={checkInputErro("numeroNoCartao") ? "erro" : ""}
-                        maxWidth="228px"
+                            type="text"
+                            name="nomeNoCartao"
+                            id="nomeNoCartao"
+                            value={form.values.nomeNoCartao}
+                            onChange={form.handleChange}
+                            onBlur={form.handleBlur}
+                            className={checkInputErro("nomeNoCartao") ? "erro" : ""}
                         />
-                    </div>
-                    <div>
-                        <label htmlFor="cvv">CVV</label>
-                        <Input
-                        type="text"
-                        name="cvv"
-                        id="cvv"
-                        value={form.values.cvv}
-                        onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                        className={checkInputErro("cvv") ? "erro" : ""}
-                        maxWidth="87px"
-                        />
-                    </div>
-                    </GrupoInput>
-                    <GrupoInput
-                    gridColumn="auto auto"
-                    gap="32px"
-                    marginBottom="24px"
-                    >
-                    <div>
-                        <label htmlFor="mesDeVencimento">Mês de vencimento</label>
-                        <Input
-                        type="text"
-                        name="mesDeVencimento"
-                        id="mesDeVencimento"
-                        value={form.values.mesDeVencimento}
-                        onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                        className={
-                            checkInputErro("mesDeVencimento") ? "erro" : ""
-                        }
-                        maxWidth="155px"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="anoDeVencimento">Ano de vencimento</label>
-                        <Input
-                        type="text"
-                        name="anoDeVencimento"
-                        id="anoDeVencimento"
-                        value={form.values.anoDeVencimento}
-                        onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                        className={
-                            checkInputErro("anoDeVencimento") ? "erro" : ""
-                        }
-                        maxWidth="155px"
-                        />
-                    </div>
-                    </GrupoInput>
+                        </GrupoInput>
+                        <GrupoInput gridColumn="auto auto" gap="30px">
+                        <div>
+                            <label htmlFor="numeroDoCartao">Número do cartão</label>
+                            <Input
+                            type="text"
+                            name="numeroDoCartao"
+                            id="numeroDoCartao"
+                            value={form.values.numeroDoCartao}
+                            onChange={form.handleChange}
+                            onBlur={form.handleBlur}
+                            className={checkInputErro("numeroDoCartao") ? "erro" : ""}
+                            maxWidth="228px"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="cvv">CVV</label>
+                            <Input
+                            type="text"
+                            name="cvv"
+                            id="cvv"
+                            value={form.values.cvv}
+                            onChange={form.handleChange}
+                            onBlur={form.handleBlur}
+                            className={checkInputErro("cvv") ? "erro" : ""}
+                            maxWidth="87px"
+                            />
+                        </div>
+                        </GrupoInput>
+                        <GrupoInput
+                        gridColumn="auto auto"
+                        gap="32px"
+                        marginBottom="24px"
+                        >
+                        <div>
+                            <label htmlFor="mesDeVencimento">Mês de vencimento</label>
+                            <Input
+                            type="text"
+                            name="mesDeVencimento"
+                            id="mesDeVencimento"
+                            value={form.values.mesDeVencimento}
+                            onChange={form.handleChange}
+                            onBlur={form.handleBlur}
+                            className={
+                                checkInputErro("mesDeVencimento") ? "erro" : ""
+                            }
+                            maxWidth="155px"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="anoDeVencimento">Ano de vencimento</label>
+                            <Input
+                            type="text"
+                            name="anoDeVencimento"
+                            id="anoDeVencimento"
+                            value={form.values.anoDeVencimento}
+                            onChange={form.handleChange}
+                            onBlur={form.handleBlur}
+                            className={
+                                checkInputErro("anoDeVencimento") ? "erro" : ""
+                            }
+                            maxWidth="155px"
+                            />
+                        </div>
+                        </GrupoInput>
 
-                    <ButtonContainer type="submit" title="Finalizar pagamento">
-                    Finalizar Pagamento
-                    </ButtonContainer>
-                    <ButtonContainer
-                    type="button"
-                    title="Voltar para a edição de pagamento"
-                    onClick={() => setPagamento(true)}
-                    >
-                    Voltar para a edição de endereço
-                    </ButtonContainer>
-                </Linha>
+                        <ButtonContainer
+                            type="submit"
+                            title="Finalizar pagamento">
+
+                            Finalizar Pagamento
+                        </ButtonContainer>
+                        <ButtonContainer
+                        type="button"
+                        title="Voltar para a edição de pagamento"
+                        onClick={() => setPagamento(true)}
+                        >
+                        Voltar para a edição de endereço
+                        </ButtonContainer>
+                    </Linha>
+                </form>
                 )}
-            </form>
             </CheckContainer>
         )}
         </Container>
