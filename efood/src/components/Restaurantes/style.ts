@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { cores } from "../../globalStyle";
 import { TagsContainer } from "../Tags/style";
-import { Link } from "react-router-dom";
 
 export const Card = styled.div`
     border: 1px solid ${cores.rosaEscuro};

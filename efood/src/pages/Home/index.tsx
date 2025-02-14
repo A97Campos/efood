@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-
 import { ListaRestaurantes } from "../../components/ListaRestaurante";
 import { Header } from "../../components/Header";
 import { useGetRestauranteQuery } from "../../services/api";
+import { Loader } from "../../components/Loader";
 
 export type Restaurantes = {
     id: number
@@ -26,6 +25,12 @@ export type Cardapios = {
 
 export const Home = () => {
     const { data: restaurante} = useGetRestauranteQuery()
+
+    if (!restaurante) {
+        return (
+            <Loader />
+        )
+    }
 
     return (
         <>  
