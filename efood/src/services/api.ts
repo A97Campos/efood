@@ -2,34 +2,35 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { Restaurantes} from '../pages/Home'
 
-type Produto = {
+type Product = {
     id: number
-    preco: number
+    price: number
 }
 
 type PurchasePayload = {
-    produtos: Produto[]
+    products: Product[]
     delivery: {
-        nome: string
-        endereco: {
-            rua: string
-            cidade: string
-            cep: string
-            numero: string
-            complemento?: string
+        receiver: string
+        address: {
+            description: string
+            city: string
+            zipCode: string
+            number: number
+            complement?: string
         }
-    },
-    pagamento: {
-        cartao: {
-            nomeNoCartao: string
-            numeroNoCartao: string
-            cvv: number
-            expira: {
-                mes: number
-                ano: number
+    }
+    payment: {
+        card: {
+            name: string
+            number: string
+            code: number
+            expires: {
+                month: number
+                year: number
             }
         }
     }
+
 }
 
 type PurchaseResponse = {

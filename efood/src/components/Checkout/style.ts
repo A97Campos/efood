@@ -1,15 +1,11 @@
 import styled from "styled-components";
 import { cores } from "../../globalStyle";
 import { ButtonContainer } from "../Button/style";
-import { Button } from "../Button";
 
 type GrupoInputProps = {
     gridColumn?: string
     gap?: string
     marginBottom?: string
-}
-
-type InputProps = {
     maxWidth?: string
 }
 
@@ -68,16 +64,16 @@ export const GrupoInput = styled.div<GrupoInputProps>`
     
     label {
         margin-bottom: 8px;
-        }
-        
-`
-export const Input = styled.input<InputProps>`
-    margin-bottom: 8px;
-    border: none;
-    height: 32px;
-    background-color: ${cores.rosaClaro};
-    width: ${(props) => props.maxWidth || 'auto'};
+    }
 
+    input {
+        margin-bottom: 8px;
+        border: none;
+        height: 32px;
+        background-color: ${cores.rosaClaro};
+        width: 100%;
+    }
+        
     &.erro {
         border: 2px solid red;
     }
