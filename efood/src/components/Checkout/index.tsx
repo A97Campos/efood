@@ -293,7 +293,7 @@ export const Checkout = () => {
                                         onChange={form.handleChange}
                                         onBlur={form.handleBlur}
                                         className={checkInputErro("cvv") ? "erro" : ""}
-                                        mask="99"/>
+                                        mask="999"/>
                                 </div>
                             </GrupoInput>
                             <GrupoInput
