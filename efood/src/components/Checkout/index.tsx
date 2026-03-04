@@ -16,7 +16,7 @@ export const Checkout = () => {
 
     const { itemCardapio } = useSelector((state: RootReducer) => state.cart);
 
-    const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation();
+    const [purchase, { data, isSuccess }] = usePurchaseMutation();
 
     const [pagamento, setPagamento] = useState(true);
 
